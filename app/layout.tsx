@@ -1,11 +1,15 @@
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+import { Inter as FontSans } from 'next/font/google';
 import './globals.css';
+import { cn } from '@/lib/utils';
 
-const inter = Inter({ subsets: ['latin'] });
+export const fontSans = FontSans({
+  subsets: ['latin'],
+  variable: '--font-sans',
+});
 
 export const metadata: Metadata = {
-  title: 'Action Replico!',
+  title: 'Action Replico | Transform your 3d ideas into a digital world',
   description:
     'A one and only website to handle all your problems related to 3D animations.',
 };
@@ -16,8 +20,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className={inter.className}>{children}</body>
+    <html lang="en" suppressHydrationWarning>
+      <body
+        className={cn(
+          'min-h-screen bg-background font-sans antialiased',
+          fontSans.variable
+        )}>
+        {children}
+      </body>
     </html>
   );
 }
