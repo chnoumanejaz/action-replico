@@ -9,10 +9,10 @@ const TOP_NAV_MENU = ['Home', 'Product', 'Services', 'Contact', 'About us'];
 
 const TopNavBar = () => {
   return (
-    <nav className="flex justify-between items-center px-8 bg-transparent absolute top-0 w-full z-10 shadow-sm">
+    <nav className="flex gap-4 justify-between items-center px-2 md:px-8 bg-transparent absolute top-0 w-full z-10 shadow-sm">
       <Logo />
 
-      <ul className="flex gap-6">
+      <ul className="hidden md:flex gap-6">
         {TOP_NAV_MENU.map((menu, index) => (
           <li key={index}>
             <Link
