@@ -10,7 +10,7 @@ export type TeamMember = {
   expertie: string;
 };
 
-const TEAM_MEMBERS: TeamMember[] = [
+export const TEAM_MEMBERS: TeamMember[] = [
   {
     id: '12467',
     name: 'M Nouman Ejaz',
@@ -35,7 +35,7 @@ const TEAM_MEMBERS: TeamMember[] = [
   {
     id: '5626651',
     name: 'Khaula Sohail',
-    email: 'khaulapatani@gmail.com',
+    email: 'Khaulasohail313@gmail.com',
     imgSrc: '/team/khaula.png',
     expertie: 'Expert in the Mobile development and Data Science!',
   },
