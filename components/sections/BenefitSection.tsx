@@ -16,6 +16,7 @@ const BenefitSection = () => {
   return (
     <SectionWrapper
       title="Benefits"
+      id="benefits"
       subheading="What benefits you'll get from us">
       <div className="flex justify-evenly gap-8 items-center">
         <ul className="space-y-3">

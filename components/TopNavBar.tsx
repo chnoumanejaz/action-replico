@@ -6,7 +6,7 @@ import { FiLogIn } from 'react-icons/fi';
 import { TbLogin } from 'react-icons/tb';
 import { ThemeToggler } from './common/ThemeToggler';
 
-const TOP_NAV_MENU = ['Home', 'Product', 'Services', 'Contact', 'About us'];
+const TOP_NAV_MENU = ['Features', 'Benefits', 'Team'];
 
 const TopNavBar = () => {
   return (
@@ -17,7 +17,7 @@ const TopNavBar = () => {
         {TOP_NAV_MENU.map((menu, index) => (
           <li key={index}>
             <Link
-              href="/"
+              href={`#${menu.toLowerCase()}`}
               className="hover:opacity-100 opacity-75 font-medium p-3 rounded transition-opacity">
               {menu}
             </Link>

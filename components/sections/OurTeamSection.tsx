@@ -45,6 +45,7 @@ const OurTeamSection = () => {
   return (
     <SectionWrapper
       title="Our Team"
+      id="team"
       subheading="Meet the team of our top experts">
       <div className="flex flex-wrap md:flex-nowrap justify-between gap-8">
         {TEAM_MEMBERS.map(member => (

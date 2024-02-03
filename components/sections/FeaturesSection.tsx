@@ -41,6 +41,7 @@ const FeaturesSection = () => {
   return (
     <SectionWrapper
       title="Features"
+      id="features"
       subheading="These are the main features from our side!">
       <div className="flex flex-wrap md:flex-nowrap justify-evenly gap-6">
         {FEATURES.map(feature => (

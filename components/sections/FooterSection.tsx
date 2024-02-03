@@ -24,7 +24,7 @@ const FooterSection = () => {
         <div className="flex gap-10 md:gap-32 w-full">
           <div>
             <h3 className="font-semibold mb-3">Animate Modal</h3>
-            <ul className="space-y-2 text-white/80 hover:text-white transition-colors">
+            <ul className="space-y-2 dark:text-white/80 dark:hover:text-white transition-colors">
               <li className="hover:translate-x-1 transition-transform cursor-pointer">
                 Register
               </li>
@@ -39,7 +39,7 @@ const FooterSection = () => {
 
           <div>
             <h3 className="font-semibold mb-3">Contact Team</h3>
-            <ul className="space-y-2 text-white/80 hover:text-white transition-colors">
+            <ul className="space-y-2 dark:text-white/80 dark:hover:text-white transition-colors">
               {TEAM_MEMBERS.map(member => (
                 <li
                   key={member.id}
