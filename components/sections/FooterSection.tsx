@@ -12,7 +12,7 @@ import { FaFacebook } from 'react-icons/fa';
 
 const FooterSection = () => {
   return (
-    <footer className="md:p-10 md:pb-0 p-4  mt-6 bg-primary/5">
+    <footer className="md:p-10 md:pb-0 p-4 mt-6 bg-primary/5">
       <div className="flex flex-wrap md:flex-nowrap justify-between md:gap-8 gap-3">
         <div className="md:w-1/2 w-full space-y-4 order-2">
           <Logo />
@@ -67,7 +67,7 @@ const FooterSection = () => {
             </Button>
           </div>
           <p className="text-muted-foreground text-sm py-3">
-            Please feel free to conact our team in case you face any difficulty
+            Please feel free to contact our team in case you face any difficulty
             and have fun with your 3D animations journey! :)
           </p>
         </div>
