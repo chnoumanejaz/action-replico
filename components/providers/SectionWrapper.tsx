@@ -17,7 +17,7 @@ const SectionWrapper = ({
         <h2 className="text-4xl font-medium">{title}</h2>
         <p className="text-muted-foreground">{subheading}</p>
       </div>
-      {children}
+      <div className="w-full">{children}</div>
     </section>
   );
 };

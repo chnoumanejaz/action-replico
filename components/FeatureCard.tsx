@@ -24,7 +24,7 @@ const FeatureCard = ({ feature }: FeatureCardProps) => {
       </CardHeader>
       <CardContent>{featureDescription}</CardContent>
       <CardFooter>
-        <Button variant="outline" className="w-full">
+        <Button className="w-full">
           Explore Now
           <IoOpenOutline className="h-4 w-4 ml-2" />
         </Button>
