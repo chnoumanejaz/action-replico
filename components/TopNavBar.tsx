@@ -10,7 +10,7 @@ const TOP_NAV_MENU = ['Home', 'Product', 'Services', 'Contact', 'About us'];
 
 const TopNavBar = () => {
   return (
-    <nav className="flex gap-4 justify-between items-center px-2 md:px-8 bg-transparent absolute top-0 w-full z-10 shadow-sm">
+    <nav className="flex gap-4 py-2 justify-between items-center px-2 md:px-8 bg-transparent absolute top-0 w-full z-10 shadow-sm">
       <Logo />
 
       <ul className="hidden md:flex gap-6">
@@ -31,7 +31,7 @@ const TopNavBar = () => {
           <FiLogIn className="mr-2 h-4 w-4" />
           Login
         </Button>
-        <Button>
+        <Button className="hidden md:flex">
           Register
           <TbLogin className="ml-2 w-5 h-5" />
         </Button>

@@ -26,7 +26,7 @@ const HeroSection = () => {
         <h1 className="text-2xl md:text-6xl font-bold mb-4">
           Animating AI-Generated Digital Humans
         </h1>
-        <p className="text-black/75 dark:text-secondary-foreground my-6">
+        <p className="text-black/75 dark:text-secondary-foreground my-6 px-2">
           Presenting the latest advancements from Action Replico: Unveiling
           state-of-the-art solutions such as Animate 3D, employing AI motion
           capture from various videos, leveraging the capabilities of Generative
