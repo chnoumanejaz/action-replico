@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { Button } from './ui/button';
 import { FiLogIn } from 'react-icons/fi';
 import { TbLogin } from 'react-icons/tb';
+import { ThemeToggler } from './common/ThemeToggler';
 
 const TOP_NAV_MENU = ['Home', 'Product', 'Services', 'Contact', 'About us'];
 
@@ -25,6 +26,7 @@ const TopNavBar = () => {
       </ul>
 
       <div className="flex gap-2">
+        <ThemeToggler />
         <Button variant="outline" className="bg-transparent">
           <FiLogIn className="mr-2 h-4 w-4" />
           Login

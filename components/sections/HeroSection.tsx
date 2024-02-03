@@ -14,7 +14,7 @@ const HeroSection = () => {
         autoPlay
         loop
         muted
-        className="object-cover w-full h-full opacity-30 filter brightness-50">
+        className="object-cover w-full h-full opacity-20 filter brightness-50">
         <source src="/heroVideo.mp4" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
@@ -26,7 +26,7 @@ const HeroSection = () => {
         <h1 className="text-2xl md:text-6xl font-bold mb-4">
           Animating AI-Generated Digital Humans
         </h1>
-        <p className="text-black/75 my-6">
+        <p className="text-black/75 dark:text-secondary-foreground my-6">
           Presenting the latest advancements from Action Replico: Unveiling
           state-of-the-art solutions such as Animate 3D, employing AI motion
           capture from various videos, leveraging the capabilities of Generative
