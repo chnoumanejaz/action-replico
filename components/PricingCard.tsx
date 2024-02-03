@@ -1,5 +1,8 @@
-import React from 'react';
+import Link from 'next/link';
+import { MdDone } from 'react-icons/md';
 import { SubscriptionPlan } from './sections/PricingSection';
+import { Badge } from './ui/badge';
+import { Button } from './ui/button';
 import {
   Card,
   CardContent,
@@ -7,10 +10,6 @@ import {
   CardFooter,
   CardHeader,
 } from './ui/card';
-import { Badge } from './ui/badge';
-import { MdDone } from 'react-icons/md';
-import { Button } from './ui/button';
-import Link from 'next/link';
 
 interface PricingCardProps {
   plan: SubscriptionPlan;
@@ -33,11 +32,9 @@ const PricingCard = ({ plan }: PricingCardProps) => {
         <CardDescription>{plan.packageSportingSentence}</CardDescription>
         <p className="text-5xl font-light relative pt-4">
           {plan.price}{' '}
-          <Badge
-            variant="outline"
-            className="absolute ml-2 bottom-0 text-nowrap text-sm font-thin">
+          <span className="absolute ml-2 bottom-0 text-nowrap text-sm font-thin">
             PKR/month
-          </Badge>{' '}
+          </span>{' '}
         </p>
       </CardHeader>
       <CardContent className="flex flex-col items-center pt-6 border-t">

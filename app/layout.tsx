@@ -27,7 +27,7 @@ export default function RootLayout({
           'min-h-screen bg-background font-sans antialiased',
           fontSans.variable
         )}>
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
           {children}
         </ThemeProvider>
       </body>
