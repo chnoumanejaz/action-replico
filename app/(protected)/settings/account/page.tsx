@@ -17,7 +17,7 @@ import { useCurrentUser } from '@/hooks/auth/useCurrentUser';
 import { SettingSchema, TSettingSchema } from '@/schema/auth-schema';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useSession } from 'next-auth/react';
-import { useState, useTransition } from 'react';
+import { SetStateAction, useState, useTransition } from 'react';
 import { useForm } from 'react-hook-form';
 
 const AccountSettingPage = () => {
@@ -41,14 +41,19 @@ const AccountSettingPage = () => {
   const handleUpdate = (data: TSettingSchema) => {
     startTransition(() => {
       settings(data)
-        .then(data => {
-          if (data.error) {
-            setError(data.error);
-          } else {
-            setSuccess(data.success);
-            update();
+        .then(
+          (data: {
+            error: SetStateAction<string | undefined>;
+            success: SetStateAction<string | undefined>;
+          }) => {
+            if (data.error) {
+              setError(data.error);
+            } else {
+              setSuccess(data.success);
+              update();
+            }
           }
-        })
+        )
         .catch(() => setError('Something went wrong! try again'));
     });
   };

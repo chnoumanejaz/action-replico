@@ -2,13 +2,13 @@ import React from 'react';
 import Logo from '../common/Logo';
 import { Button } from '../ui/button';
 import { Input } from '@/components/ui/input';
-import { TEAM_MEMBERS } from './OurTeamSection';
 import {
   GitHubLogoIcon,
   InstagramLogoIcon,
   TwitterLogoIcon,
 } from '@radix-ui/react-icons';
 import { FaFacebook } from 'react-icons/fa';
+import { TEAM_MEMBERS } from '@/data/landingPageData';
 
 const FooterSection = () => {
   return (

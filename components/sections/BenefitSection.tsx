@@ -1,16 +1,7 @@
 import Image from 'next/image';
 import { MdDone } from 'react-icons/md';
 import SectionWrapper from '../providers/SectionWrapper';
-
-const BENEFITS = [
-  'You are able to try this free of cost!',
-  'You can download the created animations!',
-  'You have the option to check the action in from any video! (premium)',
-  'You will get the complete refund!',
-  'You have the access to our trained workers! (premium)',
-  'You have your data saved!',
-  'You are able to access your data from anywhere and anytime!',
-];
+import { BENEFITS } from '@/data/landingPageData';
 
 const BenefitSection = () => {
   return (

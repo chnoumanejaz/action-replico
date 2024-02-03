@@ -1,7 +1,6 @@
-import React from 'react';
-import { TFeatures } from './sections/FeaturesSection';
-import { Card, CardContent, CardFooter, CardHeader } from './ui/card';
+import { TFeatures } from '@/types';
 import { Button } from './ui/button';
+import { Card, CardContent, CardFooter, CardHeader } from './ui/card';
 
 import { IoOpenOutline } from 'react-icons/io5';
 

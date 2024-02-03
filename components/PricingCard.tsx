@@ -1,6 +1,5 @@
 import Link from 'next/link';
 import { MdDone } from 'react-icons/md';
-import { SubscriptionPlan } from './sections/PricingSection';
 import { Badge } from './ui/badge';
 import { Button } from './ui/button';
 import {
@@ -10,6 +9,7 @@ import {
   CardFooter,
   CardHeader,
 } from './ui/card';
+import { SubscriptionPlan } from '@/types';
 
 interface PricingCardProps {
   plan: SubscriptionPlan;

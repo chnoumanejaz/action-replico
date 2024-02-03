@@ -1,6 +1,5 @@
 import { EnvelopeClosedIcon } from '@radix-ui/react-icons';
 import Image from 'next/image';
-import { TeamMember } from './sections/OurTeamSection';
 import { Button } from './ui/button';
 import {
   Card,
@@ -9,6 +8,7 @@ import {
   CardFooter,
   CardHeader,
 } from './ui/card';
+import { TeamMember } from '@/types';
 
 interface MemberCardProps {
   member: TeamMember;
