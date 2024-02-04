@@ -51,5 +51,7 @@ export const settings: any = async (data: TSettingSchema) => {
     data,
   });
 
-  return { success: 'Settings Updated successfully!' };
+  return {
+    success: 'Your account has been updated successfully!',
+  };
 };

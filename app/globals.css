@@ -63,3 +63,26 @@ html {
     @apply bg-background text-foreground;
   }
 }
+
+.portal-layout {
+  display: flex;
+}
+
+.portal-sidebar {
+  width: 250px;
+  flex: 0 0 250px;
+}
+
+.portal-main {
+  flex: 1;
+}
+
+@media (max-width: 768px) {
+  .portal-sidebar {
+    display: none;
+  }
+
+  .portal-layout {
+    flex-direction: column;
+  }
+}

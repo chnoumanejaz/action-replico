@@ -11,7 +11,7 @@ import UserAccountType from '../common/UserAccountType';
 const SideBar = () => {
   const pathname = usePathname();
   return (
-    <aside className="bg-secondary/25 border-r w-[250px] dark:text-white/85 pt-6 px-3 fixed h-full overflow-hidden flex flex-col justify-between">
+    <aside className="bg-secondary/25 border-r dark:text-white/85 pt-6 px-3 overflow-hidden flex flex-col justify-between portal-sidebar">
       <Logo />
       <div className="flex flex-col my-2 py-6 space-y-2 flex-1">
         {SidebarMenu.map(menu => {
