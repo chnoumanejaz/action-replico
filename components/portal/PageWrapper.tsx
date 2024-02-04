@@ -12,9 +12,9 @@ const PageWrapper: React.FC<PageWrapperProps> = ({
   subheading,
 }) => {
   return (
-    <div className=" h-full">
+    <div className="h-full">
       <h2 className="text-2xl  font-semibold">{title}</h2>
-      <p className="mb-10 text-muted-foreground">{subheading}</p>
+      <p className="mb-10 text-muted-foreground text-sm">{subheading}</p>
       {children}
     </div>
   );

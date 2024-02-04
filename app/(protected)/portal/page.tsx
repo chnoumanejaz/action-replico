@@ -1,15 +1,12 @@
-'use client';
-import { logout } from '@/actions/logout';
-import { Button } from '@/components/ui/button';
+import PageWrapper from '@/components/portal/PageWrapper';
 
 const PortalPage = () => {
   return (
-    <div>
-      <div className="flex"></div>
-      <Button onClick={() => logout()} type="submit">
-        Log out
-      </Button>
-    </div>
+    <PageWrapper
+      title="Your Portal"
+      subheading="Check all the neccessary and main things at one place!">
+      <div>Content goes here ...</div>
+    </PageWrapper>
   );
 };
 

@@ -3,6 +3,7 @@ import { settings } from '@/actions/settings';
 import FormError from '@/components/FormError';
 import FormSuccess from '@/components/FormSuccess';
 import PageWrapper from '@/components/portal/PageWrapper';
+import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { Button } from '@/components/ui/button';
 import {
   Card,
@@ -25,18 +26,19 @@ import { useCurrentUser } from '@/hooks/auth/useCurrentUser';
 import { SettingSchema, TSettingSchema } from '@/schema/auth-schema';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useSession } from 'next-auth/react';
+import { useRouter } from 'next/navigation';
 import { SetStateAction, useState, useTransition } from 'react';
 import { useForm } from 'react-hook-form';
-import { FaSave, FaSpinner } from 'react-icons/fa';
+import { FaInfoCircle, FaSave, FaSpinner } from 'react-icons/fa';
 import { TbStatusChange } from 'react-icons/tb';
 
 const AccountSettingPage = () => {
   const [isPending, startTransition] = useTransition();
   const user = useCurrentUser();
   const { update } = useSession();
-
   const [error, setError] = useState<string | undefined>('');
   const [success, setSuccess] = useState<string | undefined>('');
+  const router = useRouter();
 
   const form = useForm<TSettingSchema>({
     resolver: zodResolver(SettingSchema),
@@ -154,72 +156,90 @@ const AccountSettingPage = () => {
             </CardContent>
           </Card>
         </TabsContent>
+
         <TabsContent value="password">
           <Card>
             <CardHeader>
-              <CardTitle>Password</CardTitle>
+              <CardTitle>
+                {user.isOAuth ? 'Not available' : 'Password'}
+              </CardTitle>
               <CardDescription>
-                Change your password here. Make sure to remember your password!
+                {user.isOAuth
+                  ? 'Login using your credentials to change your password with the Google you cannot do this!'
+                  : 'Change your password here. Make sure to remember your password!'}
               </CardDescription>
             </CardHeader>
             <CardContent className="space-y-2">
-              <Form {...form}>
-                <form
-                  className="space-y-6"
-                  onSubmit={form.handleSubmit(handleUpdate)}>
-                  <div className="space-y-4">
-                    <FormField
-                      control={form.control}
-                      name="password"
-                      render={({ field }) => {
-                        return (
-                          <FormItem>
-                            <FormLabel>Current Password:</FormLabel>
-                            <FormControl>
-                              <Input
-                                {...field}
-                                placeholder="Enter old password"
-                                disabled={isPending}
-                              />
-                            </FormControl>
-                            <FormMessage />
-                          </FormItem>
-                        );
-                      }}
-                    />
+              {!user.isOAuth ? (
+                <Form {...form}>
+                  <form
+                    className="space-y-6"
+                    onSubmit={form.handleSubmit(handleUpdate)}>
+                    <div className="space-y-4">
+                      <FormField
+                        control={form.control}
+                        name="password"
+                        render={({ field }) => {
+                          return (
+                            <FormItem>
+                              <FormLabel>Current Password:</FormLabel>
+                              <FormControl>
+                                <Input
+                                  {...field}
+                                  placeholder="Enter old password"
+                                  disabled={isPending}
+                                />
+                              </FormControl>
+                              <FormMessage />
+                            </FormItem>
+                          );
+                        }}
+                      />
 
-                    <FormField
-                      control={form.control}
-                      name="newPassword"
-                      render={({ field }) => {
-                        return (
-                          <FormItem>
-                            <FormLabel>New Password:</FormLabel>
-                            <FormControl>
-                              <Input
-                                {...field}
-                                placeholder="Enter new password"
-                                disabled={isPending}
-                              />
-                            </FormControl>
-                            <FormMessage />
-                          </FormItem>
-                        );
-                      }}
-                    />
-                  </div>
-                  <FormError message={error} />
-                  <FormSuccess message={success} />
-                  <Button type="submit" disabled={isPending} className="w-full">
-                    {isPending ? (
-                      <FaSpinner className="h-5 w-5 mr-2 animate-spin" />
-                    ) : (
-                      <TbStatusChange className="h-5 w-5 mr-2" />
-                    )}
-                    {!isPending ? 'Change Password' : 'Changing Password...'}
-                  </Button>
-                </form>
-              </Form>
+                      <FormField
+                        control={form.control}
+                        name="newPassword"
+                        render={({ field }) => {
+                          return (
+                            <FormItem>
+                              <FormLabel>New Password:</FormLabel>
+                              <FormControl>
+                                <Input
+                                  {...field}
+                                  placeholder="Enter new password"
+                                  disabled={isPending}
+                                />
+                              </FormControl>
+                              <FormMessage />
+                            </FormItem>
+                          );
+                        }}
+                      />
+                    </div>
+                    <FormError message={error} />
+                    <FormSuccess message={success} />
+                    <Button
+                      type="submit"
+                      disabled={isPending}
+                      className="w-full">
+                      {isPending ? (
+                        <FaSpinner className="h-5 w-5 mr-2 animate-spin" />
+                      ) : (
+                        <TbStatusChange className="h-5 w-5 mr-2" />
+                      )}
+                      {!isPending ? 'Change Password' : 'Changing Password...'}
+                    </Button>
+                  </form>
+                </Form>
+              ) : (
+                <Alert>
+                  <FaInfoCircle className="h-5 w-5" />
+                  <AlertTitle>Go Ahead!</AlertTitle>
+                  <AlertDescription>
+                    Logout and Create an account using Credentials
+                  </AlertDescription>
+                </Alert>
+              )}
             </CardContent>
           </Card>
         </TabsContent>
