@@ -161,16 +161,16 @@ const AccountSettingPage = () => {
           <Card>
             <CardHeader>
               <CardTitle>
-                {user.isOAuth ? 'Not available' : 'Password'}
+                {user?.isOAuth ? 'Not available' : 'Password'}
               </CardTitle>
               <CardDescription>
-                {user.isOAuth
+                {user?.isOAuth
                   ? 'Login using your credentials to change your password with the Google you cannot do this!'
                   : 'Change your password here. Make sure to remember your password!'}
               </CardDescription>
             </CardHeader>
             <CardContent className="space-y-2">
-              {!user.isOAuth ? (
+              {!user?.isOAuth ? (
                 <Form {...form}>
                   <form
                     className="space-y-6"
