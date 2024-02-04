@@ -1,16 +1,36 @@
+'use client';
 import Image from 'next/image';
-import React from 'react';
+import { useRouter } from 'next/navigation';
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from '../ui/tooltip';
 
 const Logo = () => {
+  const router = useRouter();
   return (
-    <Image
-      src="/logo.png"
-      alt="Action Replico"
-      height={50}
-      width={50}
-      className="w-40 h-auto"
-      loading="lazy"
-    />
+    <TooltipProvider>
+      <Tooltip delayDuration={0}>
+        <div
+          onClick={() => router.push('/')}
+          className="cursor-pointer hover:brightness-125 transition ">
+          <TooltipTrigger asChild>
+            <Image
+              src="/logo.png"
+              alt="Action Replico"
+              height={100}
+              width={100}
+              className="w-40 h-auto"
+            />
+          </TooltipTrigger>
+        </div>
+        <TooltipContent>
+          <p>Go to home page</p>
+        </TooltipContent>
+      </Tooltip>
+    </TooltipProvider>
   );
 };
 
