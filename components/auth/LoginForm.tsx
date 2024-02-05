@@ -41,12 +41,12 @@ const LoginForm = () => {
 
     startTransition(() => {
       login(data).then(data => {
-        toast(data?.error);
         setError(data?.error);
-        if (data.error?.trim()) return toast(data.error);
-        if (data.success?.trim()) {
+        if (data?.success) {
           form.reset();
+          return toast('Logged In Successfully!');
         }
+        if (data?.error) return toast(data?.error);
       });
     });
   }

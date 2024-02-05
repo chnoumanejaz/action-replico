@@ -13,7 +13,7 @@ export const settings: any = async (data: TSettingSchema) => {
   const dbUser = await getUserById(user.id ? user.id : '');
   if (!dbUser) return { error: 'Unauthorized access' };
 
-  if (user.isOAuth) {
+  if (user?.isOAuth) {
     data.email = undefined;
     data.password = undefined;
     data.newPassword = undefined;
@@ -51,5 +51,7 @@ export const settings: any = async (data: TSettingSchema) => {
     data,
   });
 
-  return { success: 'Settings Updated successfully!' };
+  return {
+    success: 'Your account has been updated successfully!',
+  };
 };

@@ -21,9 +21,9 @@ const BenefitSection = () => {
         <Image
           src="/benefit-section-image.png"
           alt="Image not found"
-          height={300}
-          width={300}
-          className="hidden md:block"
+          height={500}
+          width={500}
+          className="w-1/3 h-auto hidden md:block"
         />
       </div>
     </SectionWrapper>

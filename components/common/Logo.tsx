@@ -20,8 +20,8 @@ const Logo = () => {
             <Image
               src="/logo.png"
               alt="Action Replico"
-              height={100}
-              width={100}
+              height={600}
+              width={600}
               className="w-40 h-auto"
             />
           </TooltipTrigger>

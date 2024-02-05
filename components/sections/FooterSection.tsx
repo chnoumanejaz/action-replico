@@ -9,6 +9,7 @@ import {
 } from '@radix-ui/react-icons';
 import { FaFacebook } from 'react-icons/fa';
 import { TEAM_MEMBERS } from '@/data/landingPageData';
+import Link from 'next/link';
 
 const FooterSection = () => {
   return (
@@ -26,7 +27,7 @@ const FooterSection = () => {
             <h3 className="font-semibold mb-3">Animate Modal</h3>
             <ul className="space-y-2 dark:text-white/80 dark:hover:text-white transition-colors">
               <li className="hover:translate-x-1 transition-transform cursor-pointer">
-                Register
+                <Link href="/auth/register">Register</Link>
               </li>
               <li className="hover:translate-x-1 transition-transform cursor-pointer">
                 Pricing

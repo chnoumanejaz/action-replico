@@ -44,3 +44,10 @@ export type TSidebarMenu = {
   path: string;
   icon: IconType;
 };
+
+export type ClassificationData = {
+  id: number;
+  name: string;
+  date: string;
+  videoSrc: string;
+};

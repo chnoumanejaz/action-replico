@@ -11,7 +11,7 @@ import UserAccountType from '../common/UserAccountType';
 const SideBar = () => {
   const pathname = usePathname();
   return (
-    <aside className="bg-secondary/25 border-r w-[250px] dark:text-white/85 pt-6 px-3 fixed h-full overflow-hidden flex flex-col justify-between">
+    <aside className="hidden bg-secondary/25 border-r dark:text-white/85 pt-6 px-3 overflow-hidden md:flex flex-col justify-between w-[250px] flex-shrink-0 flex-grow-0 max-h-screen min-h-screen">
       <Logo />
       <div className="flex flex-col my-2 py-6 space-y-2 flex-1">
         {SidebarMenu.map(menu => {
@@ -20,7 +20,7 @@ const SideBar = () => {
             <Link
               href={menu.path}
               key={menu.id}
-              className={`flex border rounded-md py-2 px-3 items-center font-medium group dark:hover:bg-primary/50 hover:bg-secondary transition ${
+              className={`flex shadow-sm border border-secondary/25 rounded-md py-2 px-3 items-center font-medium group dark:hover:bg-primary/50 hover:bg-secondary transition ${
                 pathname === menu.path ? 'dark:bg-primary/50 bg-secondary' : ''
               }`}>
               <Icon className="w-5 h-5 mr-2 group-hover:rotate-90 transition duration-300" />
