@@ -34,7 +34,7 @@ const MobileSideBar = () => {
             <Logo />
           </SheetTitle>
         </SheetHeader>
-        <div className="flex flex-col justify-between ">
+        <div className="flex flex-col justify-between h-[90%]">
           <div className="flex flex-col my-2 py-6 space-y-2 ">
             {SidebarMenu.map(menu => {
               const { icon: Icon } = menu;
@@ -54,7 +54,7 @@ const MobileSideBar = () => {
             })}
           </div>
 
-          <div className="border pt-3 pb-6 rounded-2xl px-4 overflow-hidden -m-3 shadow-md">
+          <div className="border pt-3 pb-6 rounded-2xl px-4 overflow-hidden -m-3 shadow-md ">
             <UserAccount />
             <div className="mt-3 flex gap-2 justify-between">
               <UserAccountType />

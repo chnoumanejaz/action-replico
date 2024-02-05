@@ -118,24 +118,22 @@ const PortalPage = () => {
         </div>
 
         {/* Activities side */}
-        <Card className="w-full md:w-1/3">
-          <CardContent className="p-5">
-            <h3 className="text-2xl font-medium mb-4">Recent Activities</h3>
-            <div className=" border-primary flex flex-col gap-2 mt-2 border-l-4 ps-[0.85rem] rounded-sm">
-              {ACTIVITIES.map((activity, idx) => (
-                <div
-                  key={idx}
-                  className="flex flex-col relative  before:absolute before:w-4 before:h-4 before:rounded-full before:bg-primary before:top-1 before:-left-6">
-                  <p>{activity.activity}</p>
-                  <p className="text-muted-foreground text-sm">
-                    {formatISOTime(activity.timeStamp)} -{' '}
-                    {formatISODate(activity.timeStamp)}
-                  </p>{' '}
-                </div>
-              ))}
-            </div>
-          </CardContent>
-        </Card>
+        <div className="w-full border rounded-lg p-5 md:w-1/3">
+          <h3 className="text-2xl font-medium mb-4">Recent Activities</h3>
+          <div className="border-primary flex flex-col gap-2 mt-2 border-l-4 ps-[0.85rem] rounded-sm">
+            {ACTIVITIES.map((activity, idx) => (
+              <div
+                key={idx}
+                className="flex flex-col relative before:absolute before:w-4 before:h-4 before:rounded-full before:bg-primary before:top-1 before:-left-6">
+                <p>{activity.activity}</p>
+                <p className="text-muted-foreground text-sm">
+                  {formatISOTime(activity.timeStamp)} &#8212;{' '}
+                  {formatISODate(activity.timeStamp)}
+                </p>{' '}
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
     </PageWrapper>
   );
