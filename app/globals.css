@@ -71,6 +71,7 @@ html {
 .portal-sidebar {
   width: 250px;
   flex: 0 0 250px;
+  max-height: 100vh;
 }
 
 .portal-main {
