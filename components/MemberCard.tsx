@@ -21,8 +21,8 @@ const MemberCard = ({ member }: MemberCardProps) => {
         <Image
           src={member.imgSrc}
           alt={member.name}
-          width={100}
-          height={100}
+          width={500}
+          height={500}
           className="object-cover mx-auto bg-primary/15 rounded-xl brightness-90 w-full h-auto"
         />
       </CardHeader>

@@ -13,7 +13,7 @@ const AnimateOpacity = ({ children }: AnimateOpacityProps) => {
       initial={{ opacity: 0.1 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.7 }}
-      className="w-ful flex justify-center">
+      className="w-full flex justify-center">
       {children}
     </motion.div>
   );

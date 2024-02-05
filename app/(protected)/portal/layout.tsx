@@ -13,9 +13,9 @@ export default async function PortalLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="portal-layout min-h-screen">
+    <div className="flex flex-col md:flex-row min-h-screen h-screen">
       <SideBar />
-      <div className="portal-main p-6 w-full">{children}</div>
+      <div className="flex-1 p-6 w-full">{children}</div>
     </div>
   );
 }
