@@ -2,18 +2,20 @@ import { PREVIOUS_CLASSIFICATION_DATA } from '@/data/portalPageData';
 import { Card, CardContent, CardDescription } from '../ui/card';
 import { ScrollArea } from '../ui/scroll-area';
 import Image from 'next/image';
+import { Button } from '../ui/button';
+import { MdDelete } from 'react-icons/md';
 
 const ClassificationsPreviousData = () => {
   return (
     <div className="order-2">
-      <h3 className="text-xl mb-2">Previous data</h3>
+      <h3 className="text-xl mb-2">History</h3>
       <ScrollArea className="w-full md:w-[300px] bg-secondary/10 h-[470px] rounded-lg border p-2 pr-3">
         {PREVIOUS_CLASSIFICATION_DATA.length > 0 ? (
           PREVIOUS_CLASSIFICATION_DATA.map(item => (
             <Card
               key={item.id}
               className="flex justify-center items-center mb-2 py-2 cursor-pointer hover:bg-secondary dark:hover:brightness-125 hover:opacity-100 opacity-90 transition">
-              <CardContent className="flex gap-3 py-0">
+              <CardContent className="flex gap-3 py-0 px-3">
                 <video
                   autoPlay
                   loop

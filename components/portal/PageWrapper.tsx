@@ -1,6 +1,5 @@
 import React from 'react';
 import MobileSideBar from './MobileSideBar';
-
 interface PageWrapperProps {
   children: React.ReactNode;
   title: string;
