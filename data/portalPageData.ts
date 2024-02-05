@@ -32,3 +32,41 @@ export const PREVIOUS_CLASSIFICATION_DATA: ClassificationData[] = [
     videoSrc: '/videos/jugglingballs.mp4',
   },
 ];
+
+export const OVERVIEW_DATA = [
+  {
+    name: 'Animations',
+    description: 'Number of animations you created yet!',
+    value: '04',
+    path: '/portal/animations',
+  },
+  {
+    name: 'Classifications',
+    description: 'Number of videos you classified yet!',
+    value: '12',
+    path: '/portal/classification',
+  },
+];
+
+export const ACTIVITIES = [
+  {
+    activity: 'Classified a new video (Tai Chi)',
+    timeStamp: new Date().toISOString(),
+  },
+  {
+    activity: 'Animated a new modal with walking animation.',
+    timeStamp: new Date().toISOString(),
+  },
+  {
+    activity: 'You updated your account password.',
+    timeStamp: new Date().toISOString(),
+  },
+  {
+    activity: 'You deleted your classified (running) video from your history.',
+    timeStamp: new Date().toISOString(),
+  },
+  {
+    activity: 'Classified a new video (Jumping)',
+    timeStamp: new Date().toISOString(),
+  },
+];

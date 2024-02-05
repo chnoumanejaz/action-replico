@@ -23,13 +23,7 @@ const SearchFilter = ({ data, setData }: SearchFilterProps) => {
     setData(tempData);
   }, [searchQuery, data, setData]);
 
-  return (
-    <Input
-      placeholder="Search by a name"
-      className="py-5 px-4"
-      onChange={handleSearch}
-    />
-  );
+  return <Input placeholder="Search by a name" onChange={handleSearch} />;
 };
 
 export default SearchFilter;
