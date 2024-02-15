@@ -1,7 +1,10 @@
-const ComingSoon = () => {
+interface ComingSoonProps {
+  message?: string;
+}
+
+const ComingSoon = ({ message }: ComingSoonProps) => {
   return (
     <div className="flex justify-center flex-col items-center h-screen w-screen">
-      {/* <Loader /> */}
       <video
         autoPlay
         loop
@@ -15,6 +18,7 @@ const ComingSoon = () => {
         <h2 className="text-4xl md:text-8xl mt-6 animate-pulse font-medium dark:text-white tracking-widest">
           COMING SOON
         </h2>
+        <p className="text-xl dark:text-white">{message}</p>
       </div>
     </div>
   );
