@@ -19,5 +19,5 @@ const ComingSoon = () => {
     </div>
   );
 };
-
+// deploy
 export default ComingSoon;
