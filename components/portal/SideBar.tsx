@@ -7,12 +7,18 @@ import LogoutIcon from '../common/LogoutIcon';
 import { ThemeToggler } from '../common/ThemeToggler';
 import UserAccount from '../common/UserAccount';
 import UserAccountType from '../common/UserAccountType';
+import { Button } from '../ui/button';
+import { useState } from 'react';
+import { Alert } from '../ui/alert';
+import PingServer from '../common/PingServer';
 
 const SideBar = () => {
   const pathname = usePathname();
+
   return (
     <aside className="hidden bg-secondary/25 border-r dark:text-white/85 pt-6 px-3 overflow-hidden md:flex flex-col justify-between w-[250px] flex-shrink-0 flex-grow-0 max-h-screen min-h-screen">
       <Logo />
+
       <div className="flex flex-col my-2 py-6 space-y-2 flex-1">
         {SidebarMenu.map(menu => {
           const { icon: Icon } = menu;
@@ -28,6 +34,7 @@ const SideBar = () => {
             </Link>
           );
         })}
+        <PingServer />
       </div>
 
       <div className="border-t pt-3 pb-6 rounded-2xl px-4 overflow-hidden -m-3 shadow-md">

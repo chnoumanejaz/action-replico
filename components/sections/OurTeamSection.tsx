@@ -1,6 +1,8 @@
+'use client';
 import { TEAM_MEMBERS } from '@/data/landingPageData';
 import MemberCard from '../MemberCard';
 import SectionWrapper from '../providers/SectionWrapper';
+import { useEffect } from 'react';
 
 const OurTeamSection = () => {
   return (

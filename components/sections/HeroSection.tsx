@@ -6,6 +6,7 @@ import TopNavBar from '../TopNavBar';
 import AnimateOpacity from '../common/AnimateOpacity';
 import { Button } from '../ui/button';
 import { useRouter } from 'next/navigation';
+import PingServer from '../common/PingServer';
 
 const HeroSection = () => {
   const router = useRouter();

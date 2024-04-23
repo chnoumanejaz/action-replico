@@ -9,6 +9,7 @@ import {
   CardHeader,
 } from './ui/card';
 import { TeamMember } from '@/types';
+import PingServer from './common/PingServer';
 
 interface MemberCardProps {
   member: TeamMember;
