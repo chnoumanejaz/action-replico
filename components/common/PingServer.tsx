@@ -15,6 +15,7 @@ const PingServer = () => {
       setData(data);
       setIsLoading(false);
     } catch {
+      // @ts-ignore
       setData({ code: 500, message: 'Failed to connect with flask server' });
       setIsLoading(false);
     }
@@ -31,7 +32,9 @@ const PingServer = () => {
       </Button>
 
       {data && (
+        // @ts-ignore
         <Alert variant={data?.code === 500 ? 'destructive' : 'success'}>
+          {/* @ts-ignore */}
           {data?.code} - {data?.message}
         </Alert>
       )}
