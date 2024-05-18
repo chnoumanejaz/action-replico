@@ -18,11 +18,11 @@ const ClassificationPage = () => {
                 Classify a new Video
               </h3>
               <p className="text-muted-foreground text-sm">
-                Upload a new video and check what is the action in that video
+                Select a new video and check what is the action in that video
               </p>
             </div>
             <Button variant="outline" size="lg" className="md:mt-8">
-              Upload Video
+              Select Video
             </Button>
           </div>
         </div>
