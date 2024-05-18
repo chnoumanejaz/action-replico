@@ -7,10 +7,6 @@ import LogoutIcon from '../common/LogoutIcon';
 import { ThemeToggler } from '../common/ThemeToggler';
 import UserAccount from '../common/UserAccount';
 import UserAccountType from '../common/UserAccountType';
-import { Button } from '../ui/button';
-import { useState } from 'react';
-import { Alert } from '../ui/alert';
-import PingServer from '../common/PingServer';
 
 const SideBar = () => {
   const pathname = usePathname();
@@ -34,7 +30,6 @@ const SideBar = () => {
             </Link>
           );
         })}
-        <PingServer />
       </div>
 
       <div className="border-t pt-3 pb-6 rounded-2xl px-4 overflow-hidden -m-3 shadow-md">

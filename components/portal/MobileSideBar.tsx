@@ -17,7 +17,6 @@ import { ThemeToggler } from '../common/ThemeToggler';
 import UserAccount from '../common/UserAccount';
 import UserAccountType from '../common/UserAccountType';
 import { Button } from '../ui/button';
-import PingServer from '../common/PingServer';
 
 const MobileSideBar = () => {
   const pathname = usePathname();
@@ -53,7 +52,6 @@ const MobileSideBar = () => {
                 </Link>
               );
             })}
-            <PingServer />
           </div>
 
           <div className="border pt-3 pb-6 rounded-2xl px-4 overflow-hidden -m-3 shadow-md ">
