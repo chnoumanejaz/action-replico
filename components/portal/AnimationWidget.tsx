@@ -1,16 +1,29 @@
 'use client';
-import React, { useRef, useState } from 'react';
+import React, { Dispatch, SetStateAction, useRef, useState } from 'react';
 import { FaSpinner, FaUpload } from 'react-icons/fa';
 import { Button } from '../ui/button';
 import { Input } from '../ui/input';
 import { formatFileSize } from '@/lib/utils';
 import { toast } from '../ui/use-toast';
 import { IoCloseCircleOutline } from 'react-icons/io5';
+import axios from 'axios';
 
-const AnimationWidget = () => {
+type responseDataT = {
+  code: number;
+  csvFilePath: string;
+  message: string;
+  status: string;
+};
+
+type props = {
+  setResponseData: Dispatch<SetStateAction<responseDataT | null>>;
+};
+
+const AnimationWidget = ({ setResponseData }: props) => {
   const ref = useRef<HTMLInputElement | null>(null);
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const [videoSrc, setVideoSrc] = useState<string | null>(null);
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleButtonClick = () => {
     if (ref.current) {
@@ -45,7 +58,7 @@ const AnimationWidget = () => {
     setVideoSrc(null);
   }
 
-  function handleAnimation() {
+  async function handleAnimation() {
     toast({
       title: 'Processing Video',
       description: (
@@ -55,6 +68,52 @@ const AnimationWidget = () => {
         </div>
       ),
     });
+
+    try {
+      setIsLoading(true);
+      const formData = new FormData();
+      if (selectedFile) {
+        formData.append('video', selectedFile);
+      }
+
+      const res = await axios.post(
+        'http://127.0.0.1:5000/api/v1/animate',
+        formData,
+        {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+          },
+        }
+      );
+
+      console.log(res);
+      const data = res.data;
+      setResponseData(data);
+      if (data.code === 200) {
+        toast({
+          title: 'Animation Generated Successfully',
+          description: (
+            <div className="mt-1 flex">
+              The animation has been generated successfully. You can now
+              download it. 🎉
+            </div>
+          ),
+        });
+      }
+
+      setIsLoading(false);
+    } catch (error) {
+      console.log(error);
+      setIsLoading(false);
+      toast({
+        title: 'Failed to proceed video',
+        description: (
+          <div className="mt-1">
+            An error occured while processing the video. Please try again
+          </div>
+        ),
+      });
+    }
   }
 
   return (
@@ -122,11 +181,16 @@ const AnimationWidget = () => {
               variant="outline"
               size="lg"
               className="md:mt-2"
+              disabled={isLoading}
               onClick={handleButtonClick}>
               Select another Video
             </Button>
-            <Button size="lg" className="md:mt-2" onClick={handleAnimation}>
-              Proceed this Video
+            <Button
+              size="lg"
+              className="md:mt-2"
+              disabled={isLoading}
+              onClick={handleAnimation}>
+              {isLoading ? 'Processing...' : ' Process this Video'}
             </Button>
           </div>
         )}
