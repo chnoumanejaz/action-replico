@@ -190,6 +190,7 @@ const AnimationWidget = ({ setResponseData }: props) => {
               className="md:mt-2"
               disabled={isLoading}
               onClick={handleAnimation}>
+              {isLoading && <FaSpinner className="size-5 animate-spin mr-2" />}
               {isLoading ? 'Processing...' : ' Process this Video'}
             </Button>
           </div>
