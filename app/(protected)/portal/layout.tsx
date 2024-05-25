@@ -14,7 +14,9 @@ export default async function PortalLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="flex flex-col md:flex-row min-h-screen h-screen">
+    <div
+      className="flex flex-col md:flex-row min-h-screen h-screen"
+      suppressHydrationWarning>
       <SideBar />
       <Toaster />
       <div className="flex-1 p-6 w-full">{children}</div>

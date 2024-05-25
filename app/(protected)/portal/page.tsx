@@ -61,7 +61,7 @@ const PortalPage = () => {
           <div className="flex gap-4 mt-6  flex-col md:flex-row">
             <Card className="text-white w-full md:w-1/2 cursor-pointer bg-primary hover:bg-primary/60 transition">
               <CardContent className="p-3 flex gap-4 justify-between">
-                <div>
+                <div onClick={() => router.push('/portal/animations/new')}>
                   <h3 className="text-xl font-medium">Animate Modal</h3>
                   <p className="text-sm">
                     Upload a new video and modal to perform this

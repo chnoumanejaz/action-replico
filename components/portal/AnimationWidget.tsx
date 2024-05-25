@@ -6,13 +6,11 @@ import { Input } from '../ui/input';
 import { formatFileSize } from '@/lib/utils';
 import { toast } from '../ui/use-toast';
 import { IoCloseCircleOutline } from 'react-icons/io5';
-import ClassificationInstModal from './ClassificationInstModal';
 
-const ClassificationWidget = () => {
+const AnimationWidget = () => {
   const ref = useRef<HTMLInputElement | null>(null);
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const [videoSrc, setVideoSrc] = useState<string | null>(null);
-  const [rulesReaded, setRulesReaded] = useState(false);
 
   const handleButtonClick = () => {
     if (ref.current) {
@@ -24,11 +22,11 @@ const ClassificationWidget = () => {
     const file = event.target.files?.[0] || null;
     console.log(file);
 
-    if (file && file.size > 6242880) {
+    if (file && file.size > 10242880) {
       toast({
         title: 'File Size Limit Exceeded',
         description: (
-          <div className="mt-1">Please select a file less than 6MB </div>
+          <div className="mt-1">Please select a file less than 10MB </div>
         ),
       });
       return;
@@ -47,9 +45,9 @@ const ClassificationWidget = () => {
     setVideoSrc(null);
   }
 
-  function handleClassification() {
+  function handleAnimation() {
     toast({
-      title: 'Classifying Video',
+      title: 'Processing Video',
       description: (
         <div className="mt-1 flex">
           <FaSpinner className="size-4 animate-spin mr-1" /> Please wait while
@@ -60,7 +58,7 @@ const ClassificationWidget = () => {
   }
 
   return (
-    <div className="border-2 rounded-lg border-dashed relative flex-1 p-8 bg-secondary/20">
+    <div className="border-2 rounded-lg border-dashed h-[80vh] relative p-8 bg-secondary/20">
       <Input
         type="file"
         ref={ref}
@@ -74,15 +72,6 @@ const ClassificationWidget = () => {
             className="size-7 cursor-pointer absolute top-2 right-2 hover:text-primary transition-colors"
             onClick={handleCancle}
           />
-          <ClassificationInstModal>
-            <Button
-              variant="outline"
-              size="sm"
-              className="absolute top-2 right-12"
-              onClick={() => setRulesReaded(true)}>
-              Rules of Classification
-            </Button>
-          </ClassificationInstModal>
         </>
       )}
       <div className="flex flex-col items-center justify-center h-full gap-1">
@@ -111,39 +100,24 @@ const ClassificationWidget = () => {
           <>
             <FaUpload className="md:h-14 md:w-14 h-8 w-8 opacity-60 " />
             <div className="text-center">
-              <h3 className="text-xl md:text-2xl font-semibold">
-                Classify a new Video
+              <h3 className="text-xl md:text-2xl font-semibold mt-2">
+                Animation from a new Video
               </h3>
               <p className="text-muted-foreground text-sm">
-                Select a new video and check what is the action in that video
+                Select a new video and upload to get the animation from it
               </p>
             </div>
-            <ClassificationInstModal>
-              <Button
-                variant="outline"
-                size="sm"
-                className="md:mt-8"
-                onClick={() => setRulesReaded(true)}>
-                Rules of Classification
-              </Button>
-            </ClassificationInstModal>
 
             <Button
               variant="outline"
               size="lg"
-              className="md:mt-2"
-              disabled={!rulesReaded}
+              className="md:mt-8"
               onClick={handleButtonClick}>
-              Select Video
+              Select a Video
             </Button>
-            {!rulesReaded && (
-              <p className="text-xs text-muted-foreground mt-1">
-                Please read the rules before proceeding
-              </p>
-            )}
           </>
         ) : (
-          <div className="grid grid-cols-2 gap-2 w-full">
+          <div className="grid grid-cols-2 gap-2 mt-6 w-full">
             <Button
               variant="outline"
               size="lg"
@@ -151,11 +125,8 @@ const ClassificationWidget = () => {
               onClick={handleButtonClick}>
               Select another Video
             </Button>
-            <Button
-              size="lg"
-              className="md:mt-2"
-              onClick={handleClassification}>
-              Classify this Video
+            <Button size="lg" className="md:mt-2" onClick={handleAnimation}>
+              Proceed this Video
             </Button>
           </div>
         )}
@@ -164,4 +135,4 @@ const ClassificationWidget = () => {
   );
 };
 
-export default ClassificationWidget;
+export default AnimationWidget;
