@@ -26,7 +26,7 @@ const HeroSection = () => {
 
         <div className="absolute top-1/2 w-[95%] md:w-[60%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-primary text-center">
           <Badge variant="outline" className="mb-6">
-            🎉 Beta testing version 1.0.0 is live now!
+            🎉 Beta testing version 2.1.2 is live now!
           </Badge>
           <h1 className="text-2xl md:text-6xl font-bold mb-4">
             Animating AI-Generated Digital Humans

@@ -17,7 +17,7 @@ const PortalPage = () => {
   const router = useRouter();
   return (
     <PageWrapper
-      title="Your Portal"
+      title="Replico's Portal"
       subheading="Check all the neccessary and main things at one place!">
       <div className="w-full flex md:flex-row flex-col gap-6">
         {OVERVIEW_DATA.map((overview, idx) => (

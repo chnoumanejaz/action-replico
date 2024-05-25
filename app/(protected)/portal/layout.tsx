@@ -1,4 +1,5 @@
 import SideBar from '@/components/portal/SideBar';
+import { Toaster } from '@/components/ui/toaster';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -15,6 +16,7 @@ export default async function PortalLayout({
   return (
     <div className="flex flex-col md:flex-row min-h-screen h-screen">
       <SideBar />
+      <Toaster />
       <div className="flex-1 p-6 w-full">{children}</div>
     </div>
   );
