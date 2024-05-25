@@ -36,6 +36,7 @@
     "next-auth": "^5.0.0-beta.5",
     "next-themes": "^0.2.1",
     "react": "^18",
+    "react-confetti": "^6.1.0",
     "react-dom": "^18",
     "react-hook-form": "^7.50.0",
     "react-icons": "^5.0.1",

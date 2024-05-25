@@ -2,6 +2,7 @@
 import AnimationTermsConds from '@/components/portal/AnimationTermsConds';
 import AnimationWidget from '@/components/portal/AnimationWidget';
 import PageWrapper from '@/components/portal/PageWrapper';
+import ConfettiAnim from '@/components/ui/ConfettiAnim';
 import { Button } from '@/components/ui/button';
 import { useState } from 'react';
 
@@ -38,29 +39,77 @@ const NEXT_STEPS = [
   },
 ];
 
-const codeSnippet = `import bpy 
+const codeSnippet = `import bpy
+import csv
 
-# Clear existing objects
-bpy.ops.object.select_all(action='DESELECT')
-bpy.ops.object.select_by_type(type='MESH')
-bpy.ops.object.delete() # Create a cube
-bpy.ops.mesh.primitive_cube_add(size=2, location=(0, 0, 0))
+def read_csv(file_path):
+    # Read CSV file using Python's built-in csv module
+    with open(file_path, newline='') as csvfile:
+        reader = csv.reader(csvfile)
+        headers = next(reader)  # Skip the header row
+        pose_data = [row for row in reader]
+    return headers, pose_data
 
-cube = bpy.context.object # Add rotation animation
-cube.rotation_euler = (0, 0, 0) # Initial rotation
-cube.keyframe_insert(data_path='rotation_euler', frame=1) #
+def get_bone_mapping(model):
+    # Automatically get bone names from the armature
+    bone_mapping = {i: bone.name for i, bone in enumerate(model.pose.bones) if i < 33}
+    return bone_mapping
 
-Keyframe at frame 1 cube.rotation_euler = (0, 0, 2 * 3.14159)
+def animate_model(model_name, csv_file_path):
+    # Read the pose data from CSV
+    headers, pose_data = read_csv(csv_file_path)
+    
+    # Get the model
+    model = bpy.data.objects.get(model_name)
+    if model is None:
+        print(f"Model '{model_name}' not found.")
+        return
+    
+    # Ensure the model has an armature
+    if model.type != 'ARMATURE':
+        print(f"Model '{model_name}' is not an armature.")
+        return
+    
+    # Get bone mapping automatically
+    bone_mapping = get_bone_mapping(model)
+    
+    # Enter pose mode
+    bpy.context.view_layer.objects.active = model
+    bpy.ops.object.mode_set(mode='POSE')
+    
+    # Set the frame range
+    frame_count = len(pose_data)
+    bpy.context.scene.frame_start = 0
+    bpy.context.scene.frame_end = frame_count - 1
+    
+    # Iterate over each frame
+    for row in pose_data:
+        frame_index = int(row[0])
+        bpy.context.scene.frame_set(frame_index)
+        
+        for i in range(33):
+            bone_name = bone_mapping.get(i)
+            print(bone_name)
+            if bone_name and bone_name in model.pose.bones:
+                bone = model.pose.bones[bone_name]
+                x = float(row[1 + 4*i])
+                y = float(row[2 + 4*i])
+                z = float(row[3 + 4*i])
+                
+                # Set bone location in pose mode
+                bone.location = (x, y, z)
+                
+                # Insert keyframe in pose mode
+                bone.keyframe_insert(data_path='location', frame=frame_index)
+    
+    print(f"Animation applied to model '{model_name}' from CSV file '{csv_file_path}'.")
 
-# Final rotation (2π radians)
-cube.keyframe_insert(data_path='rotation_euler', frame=50) #
-Keyframe at frame 50 # Set animation properties
-bpy.context.scene.frame_start = 1 bpy.context.scene.frame_end
-= 50 bpy.context.scene.render.fps = 24 # Export animation as a
-video bpy.context.scene.render.image_settings.file_format =
+# Example usage
+model_name = "Armature"  # Replace with the name of your model
+csv_file_path = "/home/nouman-ejaz/Desktop/standing_clap_landmarks.csv"  # Replace with the path to your CSV file
 
-'FFMPEG' bpy.context.scene.render.filepath = '/path/to/output/video.mp4'
-bpy.ops.render.render(animation=True)
+animate_model(model_name, csv_file_path)
+
 `;
 
 const ClassificationPage = () => {
@@ -95,6 +144,8 @@ const ClassificationPage = () => {
 
         {responseData && (
           <div className="grid grid-cols-2 gap-4">
+            <ConfettiAnim />
+
             <div className="bg-secondary/20 border p-6 rounded-lg">
               <h3 className="text-lg font-semibold">What&apos;s Next?</h3>
               <p className="text-muted-foreground text-sm">
