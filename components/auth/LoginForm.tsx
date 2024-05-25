@@ -20,7 +20,7 @@ import { Input } from '../ui/input';
 import CardWrapper from './CardWrapper';
 import { FiLogIn } from 'react-icons/fi';
 import { FaSpinner } from 'react-icons/fa';
-import { toast } from 'sonner';
+import { toast } from '../ui/use-toast';
 
 const LoginForm = () => {
   const form = useForm<TLoginSchema>({
@@ -44,9 +44,17 @@ const LoginForm = () => {
         setError(data?.error);
         if (data?.success) {
           form.reset();
-          return toast('Logged In Successfully!');
+          toast({
+            title: 'Logged In Successfully!',
+          });
+          return;
         }
-        if (data?.error) return toast(data?.error);
+        if (data?.error) {
+          toast({
+            title: data?.error,
+          });
+          return;
+        }
       });
     });
   }

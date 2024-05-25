@@ -5,7 +5,7 @@ import { cn } from '@/lib/utils';
 import { ThemeProvider } from '@/components/providers/theme-provider';
 import { SessionProvider } from 'next-auth/react';
 import { auth } from '@/auth';
-import { Toaster } from '@/components/ui/sonner';
+import { Toaster } from '@/components/ui/toaster';
 
 const roboto = Poppins({
   weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
@@ -31,7 +31,7 @@ export default async function RootLayout({
       <html lang="en" suppressHydrationWarning>
         <body
           className={cn(
-            'min-h-screen bg-background  antialiased',
+            'min-h-screen bg-background antialiased max-w-[1500px] mx-auto',
             roboto.className
           )}>
           <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>

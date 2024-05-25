@@ -17,9 +17,9 @@ import {
 } from '../ui/form';
 import { Input } from '../ui/input';
 import CardWrapper from './CardWrapper';
-import { toast } from 'sonner';
 import { FaSpinner } from 'react-icons/fa';
 import { MdOutlineLockReset } from 'react-icons/md';
+import { toast } from '../ui/use-toast';
 
 const ResetForm = () => {
   const form = useForm<TResetSchema>({
@@ -41,8 +41,19 @@ const ResetForm = () => {
       reset(data).then(data => {
         setError(data?.error);
         setSuccess(data?.success);
-        if (data.success) form.reset();
-        if (data.error) toast(data.error);
+        if (data.success) {
+          form.reset();
+          toast({
+            title: 'Password recovered Successfully!',
+          });
+          return;
+        }
+        if (data.error) {
+          toast({
+            title: data?.error,
+          });
+          return;
+        }
       });
     });
   }
