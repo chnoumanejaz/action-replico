@@ -3,6 +3,7 @@ import { Button } from './ui/button';
 import { Card, CardContent, CardFooter, CardHeader } from './ui/card';
 
 import { IoOpenOutline } from 'react-icons/io5';
+import Link from 'next/link';
 
 interface FeatureCardProps {
   feature: TFeatures;
@@ -23,9 +24,11 @@ const FeatureCard = ({ feature }: FeatureCardProps) => {
       </CardHeader>
       <CardContent>{featureDescription}</CardContent>
       <CardFooter>
-        <Button className="w-full">
-          Explore Now
-          <IoOpenOutline className="h-4 w-4 ml-2" />
+        <Button className="w-full" asChild>
+          <Link href={feature.link}>
+            Explore Now
+            <IoOpenOutline className="h-4 w-4 ml-2" />
+          </Link>
         </Button>
       </CardFooter>
     </Card>

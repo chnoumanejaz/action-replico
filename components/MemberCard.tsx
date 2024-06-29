@@ -10,6 +10,14 @@ import {
 } from './ui/card';
 import { TeamMember } from '@/types';
 import PingServer from './common/PingServer';
+import Link from 'next/link';
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTrigger,
+} from './ui/dialog';
+import { MemberContactContent } from './sections/MemberContactContent';
 
 interface MemberCardProps {
   member: TeamMember;
@@ -33,10 +41,21 @@ const MemberCard = ({ member }: MemberCardProps) => {
         <p className="mt-2">{member.expertie}</p>
       </CardContent>
       <CardFooter>
-        <Button className="w-full">
-          <EnvelopeClosedIcon className="mr-2 h-4 w-4" />
-          <p>Contact {member.name}</p>
-        </Button>
+        <Dialog>
+          <DialogTrigger asChild>
+            <Button className="w-full">
+              <EnvelopeClosedIcon className="mr-2 h-4 w-4" />
+              <p>Contact {member.name}</p>
+            </Button>
+          </DialogTrigger>
+          <DialogContent>
+            <DialogHeader className="space-y-0">
+              <h4 className="font-semibold">Contact - {member.name}</h4>
+              <p className="text-muted-foreground text-sm">{member.email}</p>
+            </DialogHeader>
+            <MemberContactContent />
+          </DialogContent>
+        </Dialog>
       </CardFooter>
     </Card>
   );

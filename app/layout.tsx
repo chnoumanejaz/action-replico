@@ -1,15 +1,16 @@
 import type { Metadata } from 'next';
-import { Inter as FontSans } from 'next/font/google';
+import { Poppins } from 'next/font/google';
 import './globals.css';
 import { cn } from '@/lib/utils';
 import { ThemeProvider } from '@/components/providers/theme-provider';
 import { SessionProvider } from 'next-auth/react';
 import { auth } from '@/auth';
-import { Toaster } from '@/components/ui/sonner';
+import { Toaster } from '@/components/ui/toaster';
 
-const fontSans = FontSans({
+const roboto = Poppins({
+  weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
   subsets: ['latin'],
-  variable: '--font-sans',
+  display: 'swap',
 });
 
 export const metadata: Metadata = {
@@ -30,8 +31,8 @@ export default async function RootLayout({
       <html lang="en" suppressHydrationWarning>
         <body
           className={cn(
-            'min-h-screen bg-background font-sans antialiased',
-            fontSans.variable
+            'min-h-screen bg-background antialiased max-w-[1500px] mx-auto',
+            roboto.className
           )}>
           <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
             {children}

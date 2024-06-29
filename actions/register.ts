@@ -8,10 +8,6 @@ import bcrypt from 'bcryptjs';
 export const register = async (data: TRegisterSchema) => {
   const validatedFields = RegisterSchema.safeParse(data);
 
-  await new Promise<void>(resolve => {
-    setTimeout(resolve, 1500);
-  });
-
   if (!validatedFields.success) {
     return { error: 'Invalid fields data' };
   }

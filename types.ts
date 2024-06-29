@@ -4,6 +4,7 @@ export type TFeatures = {
   id: string;
   name: string;
   description: string;
+  link: string;
   icon: IconType;
 };
 

@@ -4,7 +4,6 @@ import { RegisterSchema, TRegisterSchema } from '@/schema/auth-schema';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useState, useTransition } from 'react';
 import { useForm } from 'react-hook-form';
-import { toast } from 'sonner';
 import FormError from '../FormError';
 import FormSuccess from '../FormSuccess';
 import { Button } from '../ui/button';
@@ -20,6 +19,7 @@ import { Input } from '../ui/input';
 import CardWrapper from './CardWrapper';
 import { FaSpinner } from 'react-icons/fa';
 import { FiLogIn } from 'react-icons/fi';
+import { toast } from '../ui/use-toast';
 
 const RegisterForm = () => {
   const form = useForm<TRegisterSchema>({
@@ -43,8 +43,19 @@ const RegisterForm = () => {
       register(data).then(data => {
         setError(data.error);
         setSuccess(data.success);
-        if (data.success) form.reset();
-        if (data.error) toast(data.error);
+        if (data.success) {
+          form.reset();
+          toast({
+            title: 'Account created Successfully!',
+          });
+          return;
+        }
+        if (data.error) {
+          toast({
+            title: data?.error,
+          });
+          return;
+        }
       });
     });
   }
