@@ -45,3 +45,11 @@ model Account {
   @@map("accounts")
 }
   
+model Classification {
+  id         String   @id @default(auto()) @map("_id") @db.ObjectId
+  name       String
+  confidence String
+  video      String
+  createdAt  DateTime @default(now())
+  user_Id     String
+}
